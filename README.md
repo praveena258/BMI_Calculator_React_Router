@@ -64,10 +64,94 @@ Create routing structure with react-router-dom:
 <li>Add styling using CSS or Tailwind.</li>
 
 ## PROGRAM
+bmi.js
+```
+import React, { useState } from "react";
+import "./App.css";
 
+function App() {
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [result, setResult] = useState("");
+  const [category, setCategory] = useState("");
+
+  const calculateBMI = () => {
+    const h = height / 100;
+    const bmi = (weight / (h * h)).toFixed(2);
+
+    setResult(bmi);
+
+    if (bmi < 18.5) {
+      setCategory("Underweight");
+    } else if (bmi < 24.9) {
+      setCategory("Normal");
+    } else if (bmi < 29.9) {
+      setCategory("Overweight");
+    } else {
+      setCategory("Obese");
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>BMI Calculator</h1>
+
+      <input
+        type="number"
+        placeholder="Enter height in cm"
+        value={height}
+        onChange={(e) => setHeight(e.target.value)}
+      />
+
+      <input
+        type="number"
+        placeholder="Enter weight in kg"
+        value={weight}
+        onChange={(e) => setWeight(e.target.value)}
+      />
+
+      <button onClick={calculateBMI}>Calculate</button>
+
+      <h2>BMI: {result}</h2>
+      <h2>{category}</h2>
+    </div>
+  );
+}
+
+export default App;
+```
+bmi.css
+```
+body {
+  margin: 0;
+  font-family: Arial;
+  background: lightgray;
+}
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 10px 20px;
+  background: blue;
+  color: white;
+  border: none;
+}
+```
 
 
 ## OUTPUT
+<img width="1919" height="1075" alt="image" src="https://github.com/user-attachments/assets/853e8dba-449f-44c8-9ef9-f17fa04da679" />
+<img width="1919" height="1046" alt="image" src="https://github.com/user-attachments/assets/2f51eaa6-b0f6-43eb-a536-63f1f00857de" />
 
 
 
